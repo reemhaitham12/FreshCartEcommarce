@@ -1,0 +1,18 @@
+.active{
+  @apply bg-green-500 p-2 rounded-lg duration-150 transform scale-50 font-semibold;
+}
+
+/* .active {
+  @apply relative;
+}
+
+.active::after {
+  @apply absolute left-0 bottom-0 h-0.5 bg-green-500 transition-all duration-300 font-bold ;
+  content: '';
+  width: 0;
+}
+
+.active:hover::after {
+  @apply w-full;
+} */
+
