@@ -84,7 +84,7 @@ let {setUserData , ConvertToken}=useContext(userContext);
             onBlur={formik.handleBlur}
             type="email"
             id="email"
-            className="bg-gray-50 border border-green-500 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-green-700 dark:border-green-600 dark:placeholder-green-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-300"
+            className="bg-gray-50 border border-green-500 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-400 dark:border-green-600 dark:placeholder-green-400 dark:text-black dark:focus:ring-green-500 dark:focus:border-green-300"
           />
         </div>
         {formik.errors.email && formik.touched.email && (

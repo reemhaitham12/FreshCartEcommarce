@@ -96,7 +96,7 @@ export default function Register() {
             onBlur={formik.handleBlur}
             type="text"
             id="name"
-            className="bg-gray-50 border border-green-500 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-green-700 dark:border-green-600 dark:placeholder-green-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-300"
+            className="bg-gray-50 border border-green-500 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 "
           />
         </div>
         {formik.errors.name && formik.touched.name && (
@@ -120,8 +120,7 @@ export default function Register() {
             onBlur={formik.handleBlur}
             type="email"
             id="email"
-            className="bg-gray-50 border border-green-500 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-green-700 dark:border-green-600 dark:placeholder-green-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-300"
-          />
+            className="bg-gray-50 border border-green-500 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 "/>
         </div>
         {formik.errors.email && formik.touched.email && (
           <div
@@ -144,7 +143,7 @@ export default function Register() {
             onBlur={formik.handleBlur}
             type={!show ? "password" : "text"}
             id="password"
-            className="bg-gray-50 border border-green-500 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-green-700 dark:border-green-600 dark:placeholder-green-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-300"
+            className="bg-gray-50 border border-green-500 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5"
           />
           <span
             onClick={() => handleClick()}
@@ -159,7 +158,7 @@ export default function Register() {
         </div>
         {formik.errors.password && formik.touched.password && (
           <div
-            className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+            className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 "
             role="alert"
           >
             <span className="font-medium">{formik.errors.password}</span>
@@ -168,7 +167,7 @@ export default function Register() {
         <div className="mb-5 group z-0 w-full relative">
           <label
             htmlFor="password"
-            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            className="block mb-2 text-sm font-medium text-gray-900"
           >
             rePassword :
           </label>
@@ -178,12 +177,12 @@ export default function Register() {
             onBlur={formik.handleBlur}
             type="password"
             id="rePassword"
-            className="bg-gray-50 border border-green-500 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-green-700 dark:border-green-600 dark:placeholder-green-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-300"
+            className="bg-gray-50 border border-green-500 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5"
           />
         </div>
         {formik.errors.rePassword && formik.touched.rePassword && (
           <div
-            className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+            className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50"
             role="alert"
           >
             <span className="font-medium">{formik.errors.rePassword}</span>
@@ -192,7 +191,7 @@ export default function Register() {
         <div className="mb-5 group z-0 w-full relative">
           <label
             htmlFor="tel"
-            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            className="block mb-2 text-sm font-medium text-gray-900 "
           >
             Phone :
           </label>
@@ -202,7 +201,7 @@ export default function Register() {
             onBlur={formik.handleBlur}
             type="tel"
             id="phone"
-            className="bg-gray-50 border border-green-500 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-green-700 dark:border-green-600 dark:placeholder-green-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-300"
+            className="bg-gray-50 border border-green-500 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5"
           />
         </div>
         {formik.errors.phone && formik.touched.phone && (
@@ -216,14 +215,14 @@ export default function Register() {
         {loading ? (
           <button
             type="button"
-            className=" text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+            className=" text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
           >
             <i class="fa-solid fa-spinner fa-spin-pulse"></i>
           </button>
         ) : (
           <button
             type="submit"
-            className=" text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+            className=" text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center "
           >
             Submit
           </button>
