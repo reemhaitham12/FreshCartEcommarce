@@ -6,10 +6,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { userContext } from "../../Context/UserContext";
 
-
-// post the dataApi
 export default function Register() {
-  let {setUserData}=useContext(userContext);
+  let { setUserData } = useContext(userContext);
   let navigate = useNavigate();
   const [apiError, setApiError] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -23,7 +21,7 @@ export default function Register() {
       );
       localStorage.setItem("userToken", data.token);
       navigate("/login");
-      setUserData(data.token)
+      setUserData(data.token);
       setLoading(false);
     } catch (err) {
       setApiError(err.response.data.message);
@@ -31,12 +29,13 @@ export default function Register() {
     }
   }
 
-  // password check
+  // Password visibility toggle
   const [show, setShow] = useState(false);
   function handleClick() {
     setShow(!show);
   }
-  // using Yup (matches-->to write any regex) , (email is method in Yup)
+
+  // Validation schema
   let validation = Yup.object().shape({
     name: Yup.string()
       .min(3, "min length is 3")
@@ -51,7 +50,7 @@ export default function Register() {
       .required("password is required"),
     rePassword: Yup.string().oneOf(
       [Yup.ref("password")],
-      "password and rePassword donot match"
+      "password and rePassword do not match"
     ),
     phone: Yup.string()
       .matches(/^(002)?01[0125][0-9]{8}$/, "")
@@ -72,9 +71,9 @@ export default function Register() {
   });
 
   return (
-    <div className="mx-auto w-full max-w-screen-sm md:w-1/2 pt-8">
-      <h2 className="text-3xl font-semibold pb-8">Register Now</h2>
-      <form onSubmit={formik.handleSubmit}>
+    <div className="mx-auto w-full max-w-md md:max-w-lg px-4 py-8">
+      <h2 className="text-2xl md:text-3xl font-semibold  text-center">Register Now</h2>
+      <form onSubmit={formik.handleSubmit} className="bg-white p-6 rounded-lg shadow-md">
         {apiError && (
           <div
             className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
@@ -83,10 +82,10 @@ export default function Register() {
             <span className="font-medium">{apiError}</span>
           </div>
         )}
-        <div className="mb-5 group z-0 w-full relative">
+        <div className="mb-5 relative">
           <label
-            htmlFor="text"
-            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            htmlFor="name"
+            className="block mb-2 text-sm font-medium text-gray-900"
           >
             Name :
           </label>
@@ -96,21 +95,21 @@ export default function Register() {
             onBlur={formik.handleBlur}
             type="text"
             id="name"
-            className="bg-gray-50 border border-green-500 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 "
+            className="bg-gray-50 border border-green-500 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5"
+            placeholder=" "
           />
+          {formik.errors.name && formik.touched.name && (
+            <div
+              className="text-red-600 text-sm mt-2"
+            >
+              <span className="font-medium">{formik.errors.name}</span>
+            </div>
+          )}
         </div>
-        {formik.errors.name && formik.touched.name && (
-          <div
-            className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
-            role="alert"
-          >
-            <span className="font-medium">{formik.errors.name}</span>
-          </div>
-        )}
-        <div className="mb-5 group z-0 w-full relative">
+        <div className="mb-5 relative">
           <label
             htmlFor="email"
-            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            className="block mb-2 text-sm font-medium text-gray-900"
           >
             Email :
           </label>
@@ -120,20 +119,21 @@ export default function Register() {
             onBlur={formik.handleBlur}
             type="email"
             id="email"
-            className="bg-gray-50 border border-green-500 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 "/>
+            className="bg-gray-50 border border-green-500 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5"
+            placeholder=" "
+          />
+          {formik.errors.email && formik.touched.email && (
+            <div
+              className="text-red-600 text-sm mt-2"
+            >
+              <span className="font-medium">{formik.errors.email}</span>
+            </div>
+          )}
         </div>
-        {formik.errors.email && formik.touched.email && (
-          <div
-            className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
-            role="alert"
-          >
-            <span className="font-medium">{formik.errors.email}</span>
-          </div>
-        )}
-        <div className="mb-5 group z-0 w-full relative">
+        <div className="mb-5 relative">
           <label
             htmlFor="password"
-            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            className="block mb-2 text-sm font-medium text-gray-900"
           >
             Password :
           </label>
@@ -144,32 +144,32 @@ export default function Register() {
             type={!show ? "password" : "text"}
             id="password"
             className="bg-gray-50 border border-green-500 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5"
+            placeholder=" "
           />
           <span
             onClick={() => handleClick()}
-            className="absolute inset-y-0 right-4 top-6 flex items-center py-3 text-lg cursor-pointer"
+            className="absolute inset-y-0 right-4 top-12 transform -translate-y-1/2 text-lg cursor-pointer"
           >
             {!show ? (
-              <AiFillEye className="text-gray-900 hover:text-green-500 dark:text-gray-400" />
+              <AiFillEye className="text-gray-900 hover:text-green-500" />
             ) : (
-              <AiFillEyeInvisible className="text-gray-900 hover:text-green-500 dark:text-gray-400" />
+              <AiFillEyeInvisible className="text-gray-900 hover:text-green-500" />
             )}
           </span>
+          {formik.errors.password && formik.touched.password && (
+            <div
+              className="text-red-600 text-sm mt-2"
+            >
+              <span className="font-medium">{formik.errors.password}</span>
+            </div>
+          )}
         </div>
-        {formik.errors.password && formik.touched.password && (
-          <div
-            className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 "
-            role="alert"
-          >
-            <span className="font-medium">{formik.errors.password}</span>
-          </div>
-        )}
-        <div className="mb-5 group z-0 w-full relative">
+        <div className="mb-5 relative">
           <label
-            htmlFor="password"
+            htmlFor="rePassword"
             className="block mb-2 text-sm font-medium text-gray-900"
           >
-            rePassword :
+            RePassword :
           </label>
           <input
             value={formik.values.rePassword}
@@ -178,20 +178,20 @@ export default function Register() {
             type="password"
             id="rePassword"
             className="bg-gray-50 border border-green-500 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5"
+            placeholder=" "
           />
+          {formik.errors.rePassword && formik.touched.rePassword && (
+            <div
+              className="text-red-600 text-sm mt-2"
+            >
+              <span className="font-medium">{formik.errors.rePassword}</span>
+            </div>
+          )}
         </div>
-        {formik.errors.rePassword && formik.touched.rePassword && (
-          <div
-            className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50"
-            role="alert"
-          >
-            <span className="font-medium">{formik.errors.rePassword}</span>
-          </div>
-        )}
-        <div className="mb-5 group z-0 w-full relative">
+        <div className="mb-5 relative">
           <label
-            htmlFor="tel"
-            className="block mb-2 text-sm font-medium text-gray-900 "
+            htmlFor="phone"
+            className="block mb-2 text-sm font-medium text-gray-900"
           >
             Phone :
           </label>
@@ -202,31 +202,35 @@ export default function Register() {
             type="tel"
             id="phone"
             className="bg-gray-50 border border-green-500 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5"
+            placeholder=" "
           />
+          {formik.errors.phone && formik.touched.phone && (
+            <div
+              className="text-red-600 text-sm mt-2"
+            >
+              <span className="font-medium">{formik.errors.phone}</span>
+            </div>
+          )}
         </div>
-        {formik.errors.phone && formik.touched.phone && (
-          <div
-            className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
-            role="alert"
+        <p className="mt-4 text-center text-sm text-gray-600 py-2">
+          If you have an account?{" "}
+          <a
+            href="/login"
+            className="text-green-500 hover:underline font-bold"
           >
-            <span className="font-medium">{formik.errors.phone}</span>
-          </div>
-        )}
-        {loading ? (
-          <button
-            type="button"
-            className=" text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
-          >
-            <i class="fa-solid fa-spinner fa-spin-pulse"></i>
-          </button>
-        ) : (
-          <button
-            type="submit"
-            className=" text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center "
-          >
-            Submit
-          </button>
-        )}
+            Login
+          </a>
+        </p>
+        <button
+          type="submit"
+          className={`w-full py-2.5 text-center text-sm font-medium rounded-lg ${loading ? 'bg-green-700' : 'bg-green-500'} hover:${loading ? 'bg-green-800' : 'bg-green-600'} focus:ring-4 focus:outline-none focus:ring-green-300`}
+        >
+          {loading ? (
+            <i className="fa-solid fa-spinner fa-spin-pulse"></i>
+          ) : (
+            "Register"
+          )}
+        </button>
       </form>
     </div>
   );

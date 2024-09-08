@@ -22,6 +22,8 @@ import UserAccount from "./Components/UserAccount/UserAccount";
 import Animation from "./Components/Animation/Animation";
 import WishList from "./Components/WishList/WishList";
 import WishListContextProvider from "./Context/WishListContext";
+import ForgetPassword from "./Components/ForgetPassword/ForgetPassword";
+import ResetPassword from "./Components/ResetPassword/ResetPassword";
 
 
 function App() {
@@ -132,6 +134,8 @@ function App() {
         },
         { path: "register", element: <Register /> },
         { path: "login", element: <Login /> },
+        { path: "forgetpassword", element: <ForgetPassword /> },
+        { path: "reset", element: <ResetPassword/> },
         { path: "*", element: <NotFound /> },
       ],
     },
